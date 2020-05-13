@@ -35,8 +35,13 @@ def default_role_edit
   if a == nil
     puts "Operator role doesn't have edit function"
   end
+end
 
-
+def invite_collaborator_form name,email,role
+  invite_collaborator_full_name name
+  invite_collaborator_email email
+  invite_collaborator_role role
+  click_button 'Send invitation'
 end
 
 
@@ -49,6 +54,7 @@ def navigate_to_Team_section
   find(:xpath,"//span[contains(text(),'Tools')]").click
   sleep 1
   click_link 'Team'
+  sleep 2
 end
 
 def click_login user, password
@@ -85,7 +91,19 @@ def role_editor user
   find(:xpath,"(//span[text()='#{user}']/following::w-svg-icon[@iconid='pencil'])[1]").click
 end
 
+def invite_collaborator_full_name name
+  sleep 1
+  find(:xpath,"//input[contains(@id,'name')]").send_keys name
+end
 
+def invite_collaborator_email email
+  sleep 1
+  find(:xpath,"//input[contains(@id,'email')]").send_keys email
+end
 
+def invite_collaborator_role role
+  sleep 1
+  find(:xpath,"//span[contains(text(),'#{role}')]/preceding::input[@type='radio']").click
+end
 
 ################## FeaturesHelper ##################

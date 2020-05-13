@@ -14,19 +14,31 @@ describe "Team functionality" do
 		nil
 	end
 
-	it "TC004_Verify whether the default roles of Analyst, Admin and Operator are available in Roles section" do
+	it "TC001_Verify account admin is able to add a Collaborator using invite collaborator with role type as Admin" do
+		navigate_to_Team_section
+		click_button 'Invite collaborator'
+		invite_collaborator_form 'name','email','Admin'
+	end
+
+	it "TC002_Verify account admin is able to add a Collaborator using invite collaborator with role type as Analyst" do
+		navigate_to_Team_section
+		click_button 'Invite collaborator'
+		invite_collaborator_form 'name','email','Analyst'
+	end
+
+	xit "TC004_Verify whether the default roles of Analyst, Admin and Operator are available in Roles section" do
 		navigate_to_Team_section
 		navigate_to_roles_section
 		role_name_default_check
 	end
 
-	it "TC007_Verify account admin is not able to edit any of these Analyst, Admin and Operator roles" do
+	xit "TC007_Verify account admin is not able to edit any of these Analyst, Admin and Operator roles" do
 		navigate_to_Team_section
 		navigate_to_roles_section
 		default_role_edit
 	end
 
-	it "TC012_Verify account admin is able to see role created date and time" do
+	xit "TC012_Verify account admin is able to see role created date and time" do
 		navigate_to_Team_section
 		navigate_to_roles_section
 		default_role_edit
